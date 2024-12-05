@@ -65,12 +65,13 @@ class Formation
         return $this;
     }
 
-    public function getPublishedAtString(): string {
-        if($this->publishedAt == null){
+    public function getPublishedAtString(): string
+    {
+        if ($this->publishedAt == null) {
             return "";
         }
-        return $this->publishedAt->format('d/m/Y');     
-    }      
+        return $this->publishedAt->format('d/m/Y');
+    }
     
     public function getTitle(): ?string
     {
