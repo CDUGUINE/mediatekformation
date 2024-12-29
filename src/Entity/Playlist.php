@@ -106,5 +106,5 @@ class Playlist
             }
         return $categories;
     }
-        
+    
 }
