@@ -22,18 +22,26 @@ class Formation
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: false)]
+    #[Assert\NotNull]
+    #[Assert\LessThanOrEqual(
+            value: 'today',
+            message: 'La date ne doit pas être postérieure à aujourd\'hui'
+    )]
     private ?\DateTimeInterface $publishedAt = null;
 
-    #[ORM\Column(length: 100, nullable: true)]
+    #[Assert\NoBlank()]
+    #[ORM\Column(length: 100, nullable: false)]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 20, nullable: true)]
+    #[Assert\NoBlank()]
+    #[ORM\Column(length: 20, nullable: false)]
     private ?string $videoId = null;
 
+    #[Assert\NoBlank()]
     #[ORM\ManyToOne(inversedBy: 'formations')]
     private ?Playlist $playlist = null;
 

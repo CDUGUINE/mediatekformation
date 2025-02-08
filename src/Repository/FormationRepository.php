@@ -24,6 +24,14 @@ class FormationRepository extends ServiceEntityRepository
 
     public function remove(Formation $entity): void
     {
+        $playlist = $entity->getPlaylist();
+        
+        // Retirer la formation de la playlist
+        if ($playlist){
+            $playlist->getFormations()->removeElement($entity);
+        }
+        
+        // Supprimer l'entité Formation
         $this->getEntityManager()->remove($entity);
         $this->getEntityManager()->flush();
     }

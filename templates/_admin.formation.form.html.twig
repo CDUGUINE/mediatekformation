@@ -1,0 +1,41 @@
+{{ form_start(formformation) }}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const dateInput = document.getElementById('formdate'); 
+        dateInput.addEventListener('keydown', (event) => {
+            event.preventDefault();
+        });
+    });
+</script>
+
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col-md-8">
+                    {{ form_row(formformation.title) }}
+                </div>
+                <div class="col-auto" id="formdate">
+                    {{ form_row(formformation.publishedAt) }}
+                </div>
+            </div>
+            <div class="row">                    
+                <div class="col-md-8">
+                    {{ form_row(formformation.description) }}
+                </div>
+                <div class="col-md-4">
+                    {{ form_row(formformation.videoId) }}
+                </div>
+            <div class="row">
+
+                </div>
+                <div class="col-auto">
+                    {{ form_row(formformation.playlist) }}
+                </div>
+                <div class="col-auto">
+                    {{ form_row(formformation.categories) }}
+                </div>            
+            </div>
+        </div>
+    </div>
+
+{{ form_end(formformation) }}
