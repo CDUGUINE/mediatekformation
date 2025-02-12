@@ -16,11 +16,14 @@
                         <a class="nav-link" href="{{ path('accueil') }}">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('formations') }}">Formations</a>
+                        <a class="nav-link" href="{{ path('admin.formations') }}">Formations</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('playlists') }}">Playlists</a>
-                    </li>                    
+                        <a class="nav-link" href="{{ path('admin.playlists') }}">Playlists</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('admin.categories') }}">Catégories</a>
+                    </li>
                 </ul>
             </div>
         </nav>        
@@ -33,8 +36,7 @@
             <hr>
             <p><small><em>
                 Consultez nos <a class="link-secondary" href="{{ path('cgu') }}">Conditions Générales d'Utilisation</a>
-            </em></small></p>
-            
+            </em></small></p>           
         </footer>
     </div>
 {% endblock %}

@@ -1,0 +1,13 @@
+{% extends "baseadmin.html.twig" %}
+{% block body %}
+
+    <h2>Nouvelle catégorie :</h2>
+{{ form_start(formcategorie, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    <div class="row">
+        <div class="col-md-8">
+            {{ form_row(formcategorie.name) }}
+        </div>
+    </div>
+{{ form_end(formcategorie) }}
+{% endblock %}

@@ -33,7 +33,10 @@ class Formation
 
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message: "Le titre est obligatoire.")]
-    private ?string $title = null;
+    #[Assert\Length(
+    max: 100,
+    maxMessage: "Le titre ne doit pas dépasser {{ limit }} caractères."
+    )]private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;

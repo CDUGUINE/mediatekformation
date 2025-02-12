@@ -6,8 +6,11 @@ use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
+#[UniqueEntity(fields: ['name'], message: "Ce titre existe déjà.")]
 class Categorie
 {
     #[ORM\Id]
@@ -15,7 +18,12 @@ class Categorie
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
+    #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: "Le titre est obligatoire.")]
+    #[Assert\Length(
+    max: 50,
+    maxMessage: "Le titre ne doit pas dépasser {{ limit }} caractères."
+    )]
     private ?string $name = null;
 
     /**

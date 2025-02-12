@@ -21,7 +21,10 @@ class Playlist
 
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message: "Le titre est obligatoire.")]
-    private ?string $name = null;
+    #[Assert\Length(
+    max: 100,
+    maxMessage: "Le titre ne doit pas dépasser {{ limit }} caractères."
+    )]private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     #[Assert\Length(max: 500, maxMessage: "La description ne doit pas dépasser 500 caractères.")]
