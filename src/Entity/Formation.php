@@ -7,11 +7,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: FormationRepository::class)]
 class Formation
 {
-
     /**
      * Début de chemin vers les images
      */
@@ -30,18 +31,18 @@ class Formation
     )]
     private ?\DateTimeInterface $publishedAt = null;
 
-    #[Assert\NoBlank()]
-    #[ORM\Column(length: 100, nullable: false)]
+    #[ORM\Column(length: 100)]
+    #[Assert\NotBlank(message: "Le titre est obligatoire.")]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[Assert\NoBlank()]
+    #[Assert\NotBlank(message: "L'identigiant de la vidéo est obligatoire.")]
     #[ORM\Column(length: 20, nullable: false)]
     private ?string $videoId = null;
 
-    #[Assert\NoBlank()]
+    #[Assert\NotBlank(message: "Vous devez choisir une playlist.")]
     #[ORM\ManyToOne(inversedBy: 'formations')]
     private ?Playlist $playlist = null;
 
