@@ -73,7 +73,6 @@ class Formation
     public function setPublishedAt(?\DateTimeInterface $publishedAt): static
     {
         $this->publishedAt = $publishedAt;
-
         return $this;
     }
 
@@ -93,7 +92,6 @@ class Formation
     public function setTitle(?string $title): static
     {
         $this->title = $title;
-
         return $this;
     }
 
@@ -105,7 +103,6 @@ class Formation
     public function setDescription(?string $description): static
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -117,7 +114,6 @@ class Formation
     public function setVideoId(?string $videoId): static
     {
         $this->videoId = $videoId;
-
         return $this;
     }
 
@@ -139,7 +135,6 @@ class Formation
     public function setPlaylist(?Playlist $playlist): static
     {
         $this->playlist = $playlist;
-
         return $this;
     }
 
@@ -156,14 +151,12 @@ class Formation
         if (!$this->categories->contains($category)) {
             $this->categories->add($category);
         }
-
         return $this;
     }
 
     public function removeCategory(Categorie $category): static
     {
         $this->categories->removeElement($category);
-
         return $this;
     }
 }
