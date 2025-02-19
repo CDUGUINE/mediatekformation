@@ -9,8 +9,18 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Formulaire de saisie d'une catégorie
+ * @author cdugu
+ */
 class CategorieType extends AbstractType
 {
+    /**
+     * Eléments du corps du formulaire
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -22,6 +32,11 @@ class CategorieType extends AbstractType
             ]);
     }
 
+    /**
+     * Configuration des options
+     * @param OptionsResolver $resolver
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

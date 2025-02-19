@@ -9,8 +9,11 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
-
+/**
+ * Entité playlist
+ * Définit les propriétés et méthodes des playlists
+ * @author cdugu
+ */
 #[ORM\Entity(repositoryClass: PlaylistRepository::class)]
 class Playlist
 {
@@ -78,6 +81,11 @@ class Playlist
         return $this->formations;
     }
 
+    /**
+     * Ajoute une formation à la playlist
+     * @param Formation $formation
+     * @return static
+     */
     public function addFormation(Formation $formation): static
     {
         if (!$this->formations->contains($formation)) {
@@ -88,6 +96,11 @@ class Playlist
         return $this;
     }
 
+    /**
+     * Supprime une formation de la playlist
+     * @param Formation $formation
+     * @return static
+     */
     public function removeFormation(Formation $formation): static
     {
         if ($this->formations->removeElement($formation) && $formation->getPlaylist() === $this) {
@@ -99,6 +112,7 @@ class Playlist
     }
     
     /**
+     * Retourne les catégories de la playlist
      * @return Collection<int, string>
      */
     public function getCategoriesPlaylist() : Collection

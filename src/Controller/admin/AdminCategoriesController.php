@@ -11,14 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Description of AdminCategoriesController
- *
+ * Contrôleur du back office des catégories
  * @author cdugu
  */
 class AdminCategoriesController extends AbstractController{
    
     /**
-     *
      * @var CategorieRepository
      */
     private $categorieRepository;
@@ -28,11 +26,19 @@ class AdminCategoriesController extends AbstractController{
      */
     private const CHEMIN_ADMIN_CATEGORIES = "admin/admin.categories.html.twig";
     
+    /**
+     * Constructeur
+     * @param CategorieRepository $categorieRepository
+     */
     function __construct(CategorieRepository $categorieRepository)
     {
         $this->categorieRepository= $categorieRepository;
     }
     
+    /**
+     * Affiche toutes les catégories
+     * @return Response
+     */
     #[Route('/admin/categories', name: 'admin.categories')]
     public function index(): Response
     {
@@ -42,6 +48,11 @@ class AdminCategoriesController extends AbstractController{
         ]);
     }
     
+    /**
+     * Supprime une catégorie
+     * @param int $id
+     * @return Response
+     */
     #[Route('/admin/categorie/suppr/{id}', name: 'admin.categorie.suppr')]
     public function suppr(int $id): Response{
         $categorie = $this->categorieRepository->find($id);
@@ -49,6 +60,11 @@ class AdminCategoriesController extends AbstractController{
         return $this->redirectToRoute('admin.categories');
     }
     
+    /**
+     * Ajoute une catégorie
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/admin/categorie/ajout', name: 'admin.categorie.ajout')]
     public function ajout(Request $request): Response{
         $categorie = new Categorie();

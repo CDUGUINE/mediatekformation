@@ -9,7 +9,11 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
+/**
+ * Entité formation
+ * Définit les propriétés et méthodes des formations
+ * @author cdugu
+ */
 #[ORM\Entity(repositoryClass: FormationRepository::class)]
 class Formation
 {
@@ -146,6 +150,11 @@ class Formation
         return $this->categories;
     }
 
+    /**
+     * Ajoute une catégorie à la formation
+     * @param Categorie $category
+     * @return static
+     */
     public function addCategory(Categorie $category): static
     {
         if (!$this->categories->contains($category)) {
@@ -154,6 +163,11 @@ class Formation
         return $this;
     }
 
+    /**
+     * Supprime une catégorie à la formation
+     * @param Categorie $category
+     * @return static
+     */
     public function removeCategory(Categorie $category): static
     {
         $this->categories->removeElement($category);

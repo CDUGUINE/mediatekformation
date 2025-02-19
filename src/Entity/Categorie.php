@@ -9,6 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+/**
+ * Entité catégorie
+ * Définit les propriétés et méthodes des catégories
+ * @author cdugu
+ */
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
 #[UniqueEntity(fields: ['name'], message: "Ce titre existe déjà.")]
 class Categorie
@@ -55,6 +60,7 @@ class Categorie
     }
 
     /**
+     * Retoure les formations liées à la catégorie
      * @return Collection<int, Formation>
      */
     public function getFormations(): Collection
@@ -62,6 +68,11 @@ class Categorie
         return $this->formations;
     }
 
+    /**
+     * Ajoute une formation à la catégorie
+     * @param Formation $formation
+     * @return static
+     */
     public function addFormation(Formation $formation): static
     {
         if (!$this->formations->contains($formation)) {
@@ -72,6 +83,11 @@ class Categorie
         return $this;
     }
 
+    /**
+     * Supprime une formation de la catégorie
+     * @param Formation $formation
+     * @return static
+     */
     public function removeFormation(Formation $formation): static
     {
         if ($this->formations->removeElement($formation)) {
