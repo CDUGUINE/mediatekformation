@@ -12,6 +12,6 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
         server: ftp.duch4451.odns.fr
-        server-dir: /public_html/
+        server-dir: /
         username: gitcontinu@duch4451.odns.fr
         password: ${{ secrets.ftp_password }}
