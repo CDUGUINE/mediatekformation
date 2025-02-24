@@ -45,7 +45,7 @@ class Formation
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[Assert\NotBlank(message: "L'identifiant de la vidéo est obligatoire.")]
+    #[Assert\NotBlank(message: "L'identigiant de la vidéo est obligatoire.")]
     #[ORM\Column(length: 20, nullable: false)]
     private ?string $videoId = null;
 
