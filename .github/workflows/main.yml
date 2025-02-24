@@ -13,5 +13,5 @@ jobs:
       with:
         server: ftp.duch4451.odns.fr
         server-dir: /public_html/
-        username: gitcontinu@otsomediatekformation.fr
+        username: gitcontinu@duch4451.odns.fr
         password: ${{ secrets.ftp_password }}
