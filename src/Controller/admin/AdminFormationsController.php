@@ -43,7 +43,7 @@ class AdminFormationsController extends AbstractController{
      * Affiche toutes les formations
      * @return Response
      */
-    #[Route('/admin/formations', name: 'admin.formations')]
+    #[Route('/admin', name: 'admin.formations')]
     public function index(): Response
     {
         $formations = $this->formationRepository->findAll();
