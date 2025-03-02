@@ -35,7 +35,7 @@ class UserFixture extends Fixture
     {
         $user = new User();
         $user->setUsername("admin");
-        $plaintextPassword = "admin";
+        $plaintextPassword = "Form@tion$";
         $hashedPassword = $this->passwordHasher->hashPassword(
                 $user,
                 $plaintextPassword
